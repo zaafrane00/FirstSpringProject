@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>List Produits</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="container mt-5">
+    <a href="/produits/ajout" class="btn btn-primary"> Add new product</a><br>
+        <table class="table">
+            <thead class="thead-light">
+            <tr>
+                <th>#</th>
+                <th>designation</th>
+                <th>prix</th>
+                <th>quantite</th>
+                <th>action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="produit:${listproduits}">
+                <td th:text="${produit.id}"></td>
+                <td th:text="${produit.designation}"></td>
+                <td th:text="${produit.prix}"></td>
+                <td th:text="${produit.quantite}"></td>
+                <td>
+                    <a th:href="@{/produits/delete/{id}(id=${produit.id})}" class="btn btn-danger" onclick="return confirm('are you sure ?')"> Delete</a>
+                    <a th:href="@{/produits/modifier/{id}(id=${produit.id})}" class="btn btn-success" onclick="return confirm('are you sure ?')"> Update</a>
+                </td>
+            </tr>
+            <tbody>
+        </table>
+</div>
+</body>
+<script>
+
+</script>
+</html>
